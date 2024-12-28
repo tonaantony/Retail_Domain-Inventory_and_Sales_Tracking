@@ -23,6 +23,16 @@ public class InventoryService {
         return repository.save(product);
     }
 
+    public Product getProductById(Long id){
+        Optional<Product> optional = repository.findById(id);
+        if(optional.isPresent()){
+            return optional.get();
+        }
+        else{
+            throw new ProductNotFoundException();
+        }
+    }
+
     public Product updateProduct(Long id, Product updatedProduct){
         Optional<Product> optional = repository.findById(id);
         Product product = new Product();

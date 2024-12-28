@@ -33,6 +33,11 @@ public class InventoryController {
         return inventoryService.addProduct(product);
     }
 
+    @GetMapping("/{id}")
+    public Product getProductById(@PathVariable Long id){
+        return inventoryService.getProductById(id);
+    }
+
     @PutMapping("/{id}")
     public Product updateProduct(@PathVariable Long id, @Valid @RequestBody Product product){
         return inventoryService.updateProduct(id, product);
